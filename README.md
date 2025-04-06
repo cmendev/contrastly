@@ -1,5 +1,12 @@
 
-<h1 class="center">Contrastly.♥</h1>
+<h1 class="center"></h1>
+<h1 align="center">
+  <br>
+  <a href="https://contrastly.vercel.app"><img src="public/color-kit.svg" alt="Scrollbar.app" width="140"></a>
+  <br>
+  Contrastly.♥
+  <br>
+</h1>
 
 A web application built with **React**, **TypeScript**, and **Vite** that generates accessible color palettes using artificial intelligence. It includes a contrast checker, smart suggestions based on accessibility levels, and a toast-style notification system.
 
