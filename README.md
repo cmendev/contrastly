@@ -2,7 +2,7 @@
 <h1 class="center"></h1>
 <h1 align="center">
   <br>
-  <a href="https://contrastly.vercel.app"><img src="public/color-kit.svg" alt="Scrollbar.app" width="140"></a>
+  <a href="https://contrastly.vercel.app"><img src="public/color-kit.svg" alt="Contrastly.♥" width="140"></a>
   <br>
   Contrastly.♥
   <br>
