@@ -47,7 +47,7 @@ function App() {
         rel="noopener noreferrer"
         className="fixed top-4 left-4 flex items-center z-30 space-x-2 bg-black text-white px-3 py-1.5 rounded-full text-sm shadow-md hover:bg-gray-800 transition"
       >
-        <img className="w-5 h-5" src="../public/github-mark-white.svg" alt="Github Logo" />
+        <img className="w-5 h-5" src="./assets/github-mark-white.svg" alt="Github Logo" />
 
         <span>View on GitHub</span>
       </a>
