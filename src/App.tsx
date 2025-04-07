@@ -6,10 +6,17 @@ import AISuggestions from './components/AISuggestions';
 import AccessibilityChecker from './components/AccessibilityChecker';
 import ThemeSelector from './components/ThemeSelector';
 import { useTheme } from './hooks/useTheme';
+import { CodeFormat, ColorFormat, ColorItem } from './types/code';
+import ColorPaletteLinear from './components/ColorPaletteLinear';
 
 function App() {
-  const [colors, setColors] = useState<string[]>(['#7e22ce', '#a855f7', '#d8b4fe']);
-  const [selectedFormat, setSelectedFormat] = useState<'css' | 'tailwind' | 'sass' | 'less'>('tailwind');
+  const [colors, setColors] = useState<ColorItem[]>([
+    { color: '#7e22ce', name: 'purple-800' },
+    { color: '#a855f7', name: 'purple-500' },
+    { color: '#d8b4fe', name: 'purple-200' }
+  ]);
+  const [selectedFormat, setSelectedFormat] = useState<CodeFormat>('tailwind');
+  const [colorFormat, setColorFormat] = useState<ColorFormat>('hex');
   const [paletteSize, setPaletteSize] = useState<number>(5);
 
   const {
@@ -21,8 +28,8 @@ function App() {
     getTextStyle
   } = useTheme();
 
-  const addColor = (color: string) => {
-    if (!colors.includes(color)) {
+  const addColor = (color: ColorItem) => {
+    if (!colors.some(c => c.name === color.name)) {
       setColors([...colors, color]);
     }
   };
@@ -31,7 +38,7 @@ function App() {
     setColors(colors.filter((_, i) => i !== index));
   };
 
-  const updatePalette = (newColors: string[]) => {
+  const updatePalette = (newColors: ColorItem[]) => {
     setColors(newColors);
   };
 
@@ -105,6 +112,10 @@ function App() {
         </div>
 
         <div className="space-y-6">
+        <ColorPaletteLinear 
+          baseColor={colors[0]?.color || '#7e22ce'}  
+        />
+
           <ThemeSelector
             colors={colors}
             onBackgroundChange={setCustomBackground}
@@ -116,6 +127,8 @@ function App() {
           <CodeOutput
             colors={colors}
             format={selectedFormat}
+            colorFormat={colorFormat}
+            onColorFormatChange={setColorFormat}
             onFormatChange={setSelectedFormat}
           />
         </div>
