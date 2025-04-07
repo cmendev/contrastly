@@ -24,7 +24,6 @@ export default function ColorPaletteLinear({ baseColor, colorName }: ColorPalett
   }, [baseColor, colorName]);
 
   const generatePalette = (color: string): ColorItem[] => {
-    // Creamos una escala de 10 colores desde claro a oscuro
     const scale = chroma.scale([
       chroma(color).brighten(3).saturate(0.5),
       color,

@@ -37,7 +37,6 @@ export default function ThemeSelector({
 
       {isOpen && (
         <div className="mt-4 space-y-4">
-          {/* Background */}
           <div>
             <h3 className="text-sm font-medium text-purple-800 mb-2">Background Color</h3>
             <div className="flex flex-wrap gap-2">
@@ -55,7 +54,6 @@ export default function ThemeSelector({
             </div>
           </div>
 
-          {/* Text */}
           <div>
             <h3 className="text-sm font-medium text-purple-800 mb-2">Text Color</h3>
             <div className="flex flex-wrap gap-2">
@@ -73,7 +71,6 @@ export default function ThemeSelector({
             </div>
           </div>
 
-          {/* Reset */}
           {isCustomTheme && (
             <button
               onClick={resetSelections}

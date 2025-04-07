@@ -24,7 +24,7 @@ export default function AISuggestions({
 
     try {
       const palette = await generateColorPalette({
-        baseColors: colors.map(c => c.color), // pasamos solo los valores
+        baseColors: colors.map(c => c.color),
         paletteSize,
         accessibilityLevel
       });

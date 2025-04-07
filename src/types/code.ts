@@ -12,7 +12,7 @@ export interface ColorItem {
 export interface CodeOutputProps {
   colors: ColorItem[];
   format: CodeFormat;
-  colorFormat: ColorFormat; // nuevo
+  colorFormat: ColorFormat;
   onFormatChange: (format: CodeFormat) => void;
   onColorFormatChange: (format: ColorFormat) => void;
 }
