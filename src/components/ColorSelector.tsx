@@ -16,7 +16,7 @@ export default function ColorSelector({
             >
                 {colors.map((color, index) => (
                     <option key={index} value={index}>
-                        Color {index + 1} ({color})
+                        {color.name} ({color.color})
                     </option>
                 ))}
             </select>

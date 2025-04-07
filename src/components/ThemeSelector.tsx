@@ -37,38 +37,43 @@ export default function ThemeSelector({
 
       {isOpen && (
         <div className="mt-4 space-y-4">
+          {/* Background */}
           <div>
             <h3 className="text-sm font-medium text-purple-800 mb-2">Background Color</h3>
             <div className="flex flex-wrap gap-2">
-              {colors.map((color, index) => (
+              {colors.map((colorObj, index) => (
                 <button
                   key={`bg-${index}`}
-                  className={`w-8 h-8 rounded-full border-2 transition-all ${selectedBg === color ? 'border-purple-600 scale-110' : 'border-transparent'
-                    }`}
-                  style={{ backgroundColor: color }}
-                  onClick={() => handleBackgroundSelect(color)}
-                  aria-label={`Select ${color} as background`}
+                  className={`w-8 h-8 rounded-full border-2 transition-all ${
+                    selectedBg === colorObj.color ? 'border-purple-600 scale-110' : 'border-transparent'
+                  }`}
+                  style={{ backgroundColor: colorObj.color }}
+                  onClick={() => handleBackgroundSelect(colorObj.color)}
+                  aria-label={`Select ${colorObj.name} as background`}
                 />
               ))}
             </div>
           </div>
 
+          {/* Text */}
           <div>
             <h3 className="text-sm font-medium text-purple-800 mb-2">Text Color</h3>
             <div className="flex flex-wrap gap-2">
-              {colors.map((color, index) => (
+              {colors.map((colorObj, index) => (
                 <button
                   key={`text-${index}`}
-                  className={`w-8 h-8 rounded-full border-2 transition-all ${selectedText === color ? 'border-purple-600 scale-110' : 'border-transparent'
-                    }`}
-                  style={{ backgroundColor: color }}
-                  onClick={() => handleTextSelect(color)}
-                  aria-label={`Select ${color} as text color`}
+                  className={`w-8 h-8 rounded-full border-2 transition-all ${
+                    selectedText === colorObj.color ? 'border-purple-600 scale-110' : 'border-transparent'
+                  }`}
+                  style={{ backgroundColor: colorObj.color }}
+                  onClick={() => handleTextSelect(colorObj.color)}
+                  aria-label={`Select ${colorObj.name} as text color`}
                 />
               ))}
             </div>
           </div>
 
+          {/* Reset */}
           {isCustomTheme && (
             <button
               onClick={resetSelections}

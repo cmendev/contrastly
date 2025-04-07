@@ -16,15 +16,17 @@ export default function ColorPalette({ colors, onRemoveColor }: ColorPaletteProp
         <p className="text-purple-700 text-center py-4">Add some colors to get started</p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {colors.map((color, index) => (
+          {colors.map((colorItem, index) => (
             <div key={index} className="group relative">
               <div
                 className="w-full h-20 rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105"
-                style={{ backgroundColor: color }}
-                onClick={() => copyToClipboard(color)}
+                style={{ backgroundColor: colorItem.color }}
+                onClick={() => copyToClipboard(colorItem.color)}
               />
               <div className="mt-1 flex justify-between items-start">
-                <span className="text-xs font-mono text-gray-700 truncate">{color}</span>
+                <span className="text-xs font-mono text-gray-700 truncate">
+                  {colorItem.color}
+                </span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

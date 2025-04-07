@@ -7,12 +7,12 @@ import { AccessibilityCheckerProps } from '../types/accessibility';
 
 export default function AccessibilityChecker({ colors }: AccessibilityCheckerProps) {
   const [selectedPair, setSelectedPair] = useState<[number, number]>([0, 1]);
-  const results = useContrastChecker(colors);
+  const results = useContrastChecker(colors.map(c => c.color));
 
   const currentResult = results.find(
     (r) =>
-      r.foreground === colors[selectedPair[0]] &&
-      r.background === colors[selectedPair[1]]
+      r.foreground === colors[selectedPair[0]].color &&
+    r.background === colors[selectedPair[1]].color
   );
 
   if (colors.length < 2) return null;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { generateColorPalette } from '../services/aiService';
 import { AISuggestionsProps, AccessibilityLevel } from '../types/ai';
 import { useToast } from '../lib/toast/context';
+import { ColorItem } from '../types/code';
 
 export default function AISuggestions({
   colors,
@@ -23,15 +24,22 @@ export default function AISuggestions({
 
     try {
       const palette = await generateColorPalette({
-        baseColors: colors,
+        baseColors: colors.map(c => c.color), // pasamos solo los valores
         paletteSize,
         accessibilityLevel
       });
 
-      const newColors = palette.map(c => c.color);
-      const updatedColors = replaceExisting
+      const newColors: ColorItem[] = palette.map((c) => ({
+        name: c.name,
+        color: c.color
+      }));
+
+      const updatedColors: ColorItem[] = replaceExisting
         ? [...newColors]
-        : [...colors, ...newColors.filter(color => !colors.includes(color))];
+        : [
+            ...colors,
+            ...newColors.filter(nc => !colors.some(ec => ec.color === nc.color))
+          ];
 
       onPaletteUpdate(updatedColors);
       addToast('Palette generated successfully.', 'success');

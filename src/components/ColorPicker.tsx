@@ -10,7 +10,10 @@ export default function ColorPicker({
   const [color, setColor] = useState('#7e22ce');
 
   const handleAddColor = () => {
-    onColorAdd(color);
+    onColorAdd({
+      name: `Custom ${color}`,
+      color: color,
+    });
   };
 
   const handlePaletteSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
