@@ -1,5 +1,7 @@
+import { ColorItem } from "./code";
+
 export interface AccessibilityCheckerProps {
-    colors: string[];
+    colors: ColorItem[];
 }
 
 export interface ContrastResult {
@@ -14,7 +16,7 @@ export interface ContrastResult {
 
 export interface ColorSelectorProps {
     label: string;
-    colors: string[];
+    colors: ColorItem[];
     selectedIndex: number;
     onChange: (index: number) => void;
 }

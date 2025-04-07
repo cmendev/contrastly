@@ -1,6 +1,8 @@
+import { ColorItem } from "./code";
+
 export interface AISuggestionsProps {
-    colors: string[];
-    onPaletteUpdate: (colors: string[]) => void;
+    colors: ColorItem[];
+    onPaletteUpdate: (colors: ColorItem[]) => void;
     paletteSize: number;
 }
 

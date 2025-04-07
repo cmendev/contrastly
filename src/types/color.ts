@@ -1,10 +1,12 @@
+import { ColorItem } from "./code";
+
 export interface ColorPaletteProps {
-    colors: string[];
+    colors: ColorItem[];
     onRemoveColor: (index: number) => void;
 }
 
 export interface ColorPickerProps {
-    onColorAdd: (color: string) => void;
+    onColorAdd: (color: ColorItem) => void;
     paletteSize: number;
     onPaletteSizeChange: (size: number) => void;
 }

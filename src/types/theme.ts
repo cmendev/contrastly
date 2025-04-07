@@ -1,5 +1,7 @@
+import { ColorItem } from "./code";
+
 export interface ThemeSelectorProps {
-    colors: string[];
+    colors: ColorItem[];
     onBackgroundChange: (color: string) => void;
     onTextChange: (color: string) => void;
     onReset: () => void;
