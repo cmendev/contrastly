@@ -1,13 +1,21 @@
-import { useEffect, useState } from 'react';
-import { calculateContrastRatio, hexToRgb } from '../services/colorUtils';
+import { useEffect, useState, useRef } from 'react';
 import { ContrastResult } from '../types/accessibility';
+import { calculateContrastRatio, hexToRgb } from '../services/colorUtils';
 import { useToastHelper } from '../lib/toast/useToastHelpers';
 
 export function useContrastChecker(colors: string[]) {
   const [results, setResults] = useState<ContrastResult[]>([]);
   const toast = useToastHelper();
+  const prevColorsRef = useRef<string[]>([]);
 
   useEffect(() => {
+    const prevColors = prevColorsRef.current;
+    const hasChanged = colors.length !== prevColors.length || colors.some((c, i) => c !== prevColors[i]);
+
+    if (!hasChanged) return;
+
+    prevColorsRef.current = [...colors];
+
     if (colors.length >= 2) {
       const newResults: ContrastResult[] = [];
       for (let i = 0; i < colors.length; i++) {
