@@ -30,14 +30,14 @@ export async function generateColorPalette({
       content: `Generate a harmonious color palette with ${paletteSize} colors that combines these base colors: ${baseColors.join(', ')}. 
       The palette should meet WCAG ${accessibilityLevel} accessibility standards.
       Create colors that work well together considering all the base colors provided.
-      Return ONLY a valid JSON array of color objects with hex value, name, contrast ratio and accessibility level.
+      Return ONLY a valid JSON array of color objects with hex value, with real name color NOT "ai color"(example purple, red, yellow-100 ...), contrast ratio and accessibility level.
       Example:
-      [{
+      {
         "color": "#3b82f6",
         "name": "Blue-500",
         "contrastRatio": 4.5,
         "accessibility": "AA"
-      }]`
+      }`
     }],
     model: "deepseek/deepseek-chat:free",
   });
@@ -55,6 +55,7 @@ export async function generateColorPalette({
     }
 
     const palette: ColorSuggestion[] = JSON.parse(trimmedContent);
+    console.log("Parsed palette:", palette);
     return palette;
   } catch (error) {
     console.error("Error parsing JSON from API:", error);
